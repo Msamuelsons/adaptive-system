@@ -1,0 +1,1 @@
+Código espécifico dos avatares (ex.: modelo, animações, comportamentos)
