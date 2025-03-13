@@ -10,6 +10,12 @@ setup(
     packages=find_packages(),
     install_requires=[
         'pygame',
+        'py-trees',
+        'numpy',
+        'scipy',
+        'packaging',
+        'networkx'
+        'scikit-fuzzy'
     ],
     classifiers=[
         'Programming Language :: Python :: 3',
