@@ -1,0 +1,6 @@
+Implementação da lógica Fuzzy
+
+checklist:
+
+[] -> trocar avatarA (ogre) e avatarB(hero)
+[] -> colocar mais alguma regra de pertinência
