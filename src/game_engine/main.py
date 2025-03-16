@@ -231,7 +231,7 @@ class AIAttack(py_trees.behaviour.Behaviour):
         self.target = target
         self.controlled = controlled
         self.damage = damage
-        self.min_attack_distance = 40  # distância mínima para iniciar o ataque
+        self.min_attack_distance = 100  # distância mínima para iniciar o ataque
 
     def update(self):
         current_distance = abs(self.target.rect.centerx - self.controlled.rect.centerx)
@@ -283,7 +283,7 @@ def create_ai_tree(target, controlled, attack_threshold=40, approach_step=1, att
     return root
 
 
-# ----- Criação dos Avatares (controle autônomo para ambos) -----
+# ----- Criação dos Avatares (controle "autônomo" para ambos) -----
 avatarA = Avatar(
     name="avatarA",
     x=SCREEN_WIDTH // 2 - 300,
@@ -306,7 +306,7 @@ avatarB = Avatar(
     right_key=None,
     attack_key=None,
     idle_folder="Idle",
-    run_folder="walk",  # para corrida, utiliza a pasta "walk"
+    run_folder="walk",
     scale=2.0,
     width=260,
     height=160,
@@ -314,8 +314,8 @@ avatarB = Avatar(
     health_bar_offset=-10
 )
 
-ai_tree_A = create_ai_tree(avatarB, avatarA, attack_threshold=40, approach_step=1, attack_damage=10)
-ai_tree_B = create_ai_tree(avatarA, avatarB, attack_threshold=40, approach_step=1, attack_damage=10)
+ai_tree_A = create_ai_tree(avatarB, avatarA, attack_threshold=100, approach_step=1, attack_damage=10)
+ai_tree_B = create_ai_tree(avatarA, avatarB, attack_threshold=100, approach_step=1, attack_damage=10)
 
 # ----- Loop Principal do Jogo -----
 clock = pygame.time.Clock()
