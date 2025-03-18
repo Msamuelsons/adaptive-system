@@ -34,7 +34,7 @@ Os avatares possuem um sistema emocional complexo que influencia seu comportamen
 
 1. Clone o repositório:
 ```
-git clone https://github.com/seu-usuario/autonomous-duel-fuzzy.git](https://github.com/Msamuelsons/adaptive-system.git
+git clone https://github.com/Msamuelsons/adaptive-system.git
 cd adaptive-system
 ```
 
