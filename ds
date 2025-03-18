@@ -1,0 +1,31 @@
+[33mca4fa2e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge remote-tracking branch 'origin/main'
+[33mdbd3b68[m feat: adiciona sistema de lógica fuzzy para comportamento e combate do avatar
+[33m7590c8d[m refactor: refatorar lógica de ataque no controlador de IA fuzzy
+[33m07deeab[m Merge pull request #2 from Msamuelsons/implementacao-logicas
+[33m710be0a[m[33m ([m[1;31morigin/implementacao-logicas[m[33m)[m refactor(ai): refatorar lógica de ataque no controlador de IA fuzzy
+[33m398b833[m[33m ([m[1;32mimplementacao-logicas[m[33m)[m feat(ai): adicionar sistema de lógica fuzzy para dano e modo berserk
+[33m2b4a73b[m coloque em ptbr usando logica de conventional commits
+[33m8fd6af7[m feat(ai): aumenta a distância mínima de ataque para 100
+[33m82b95c2[m chore(assets): remove arquivos de sprites obsoletos do motor do jogo
+[33m580b917[m feat(ai): adiciona árvore de comportamentos autônoma para controle de personagens
+[33mc4bd502[m feat(fuzzy_behavior_tree): adiciona árvore de comportamentos fuzzy para decisões de IA no jogo
+[33m47767b0[m feat(fuzzy_ai_controller): adiciona controlador de IA fuzzy para comportamentos de avatar
+[33ma399567[m chore(fuzzy): remover arquivo placeholder de lógica fuzzy não utilizado
+[33m3d28de0[m chore(fuzzy): adicionar rascunho inicial da implementação de lógica fuzzy
+[33mb693bee[m test(fuzzy): adicionar script inicial de teste para lógica da árvore de comportamento
+[33m07241be[m build(setup): adicionar novas dependências ao install_requires
+[33mf4c9d33[m feat(árvore-comportamento): adicionar lógica fuzzy para interações no jogo
+[33mf0f0103[m docs(images): adiciona novas imagens de diagramas para documentação
+[33m83c0fb9[m feat(assets): adiciona novos sprites para avatares
+[33md32146b[m refactor(avatar): refatora manipulação de avatar com POO e adiciona suporte a múltiplos avatares
+[33m982910c[m Merge pull request #1 from Msamuelsons/logica-fuzzy-npc
+[33md22fb54[m docs: Atualização do README.md
+[33m3909424[m[33m ([m[1;31morigin/logica-fuzzy-npc[m[33m, [m[1;32mlogica-fuzzy-npc[m[33m)[m chore(setup): adicionar configurações para dependências e metadados do projeto
+[33m5ece5c9[m Add .idea configuration and game sprite assets
+[33me4759c7[m feat(avatar): implementa código específico para o avatar com animações e comportamentos
+[33m58ed8f1[m feat(avatar): implementa código específico para modelos, animações e comportamentos
+[33m677e48a[m feat(simulator): adiciona base do simulador para aplicação da lógica fuzzy
+[33m87e1391[m feat(fuzzy-logic): implementa aplicações de lógica fuzzy
+[33m2e026aa[m feat(build): adiciona script de instalação setup.py
+[33mcd0283c[m docs: Documentation, configuration, and explanation of how the adaptative-system project works.
+[33m0fabfb5[m Initial commit
