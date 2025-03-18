@@ -628,25 +628,97 @@ def draw_debug_info(screen, avatarA, avatarB):
         screen.blit(debug_surface, (10, 10 + i * 20))
 
 
+def show_victory_screen(screen, winner_name):
+    # Cria uma superfície preta semitransparente
+    victory_overlay = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
+    victory_overlay.fill((0, 0, 0))
+    victory_overlay.set_alpha(200)  # Define transparência (0-255)
+
+    # Adiciona a superfície preta à tela
+    screen.blit(victory_overlay, (0, 0))
+
+    # Prepara o texto de vitória
+    victory_font = pygame.font.Font(None, 72)
+    victory_text = victory_font.render(f"{winner_name} VENCEU!", True, (255, 215, 0))  # Texto dourado
+
+    # Adiciona uma sombra ao texto para destacar
+    shadow_text = victory_font.render(f"{winner_name} VENCEU!", True, (128, 0, 0))
+    shadow_rect = shadow_text.get_rect(center=(SCREEN_WIDTH // 2 + 3, SCREEN_HEIGHT // 2 + 3))
+
+    # Posiciona o texto no centro da tela
+    text_rect = victory_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+
+    # Desenha a sombra e depois o texto
+    screen.blit(shadow_text, shadow_rect)
+    screen.blit(victory_text, text_rect)
+
+    # Adiciona instruções para reiniciar ou sair
+    restart_font = pygame.font.Font(None, 36)
+    restart_text = restart_font.render("Pressione 'R' para reiniciar ou 'ESC' para sair", True, (255, 255, 255))
+    restart_rect = restart_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 80))
+    screen.blit(restart_text, restart_rect)
+
+
+# Modificar o loop while running: para:
+game_over = False
+winner_name = None
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
+        # Adicionando tratamento de teclas para reiniciar o jogo
+        if game_over and event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_r:  # Reiniciar o jogo
+                # Resetar os avatares
+                avatarA.hp = avatarA.max_hp
+                avatarA.anger = 0
+                avatarA.berserk_mode = False
+                avatarA.rect.x = SCREEN_WIDTH // 2 - 300
+
+                avatarB.hp = avatarB.max_hp
+                avatarB.anger = 0
+                avatarB.berserk_mode = False
+                avatarB.rect.x = SCREEN_WIDTH // 2 + 300
+
+                game_over = False
+                winner_name = None
+            elif event.key == pygame.K_ESCAPE:  # Sair do jogo
+                running = False
+
     keys = pygame.key.get_pressed()
 
-    # Atualiza os avatares (processa animações e attack_finished)
-    avatarA.update(keys)
-    avatarB.update(keys)
+    # Se o jogo não terminou, continua com a lógica normal
+    if not game_over:
+        # Atualiza os avatares (processa animações e attack_finished)
+        avatarA.update(keys)
+        avatarB.update(keys)
 
-    # Tica as árvores de comportamento
-    ai_tree_A.tick_once()
-    ai_tree_B.tick_once()
+        # Tica as árvores de comportamento
+        ai_tree_A.tick_once()
+        ai_tree_B.tick_once()
 
+        # Verifica se algum dos avatares morreu
+        if avatarA.hp <= 0:
+            game_over = True
+            winner_name = avatarB.name
+            print(f"Jogo terminado! {winner_name} venceu!")
+        elif avatarB.hp <= 0:
+            game_over = True
+            winner_name = avatarA.name
+            print(f"Jogo terminado! {winner_name} venceu!")
+
+    # Renderização
     screen.blit(background, (0, 0))
     avatarA.draw(screen)
     avatarB.draw(screen)
     draw_debug_info(screen, avatarA, avatarB)
+
+    # Se o jogo terminou, mostra a tela de vitória
+    if game_over:
+        show_victory_screen(screen, winner_name)
+
     pygame.display.flip()
     clock.tick(60)
 
