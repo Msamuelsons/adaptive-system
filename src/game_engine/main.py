@@ -36,6 +36,21 @@ class Avatar:
         self.max_hp = 500
         self.hp = 500
 
+        # Define o dano de ataque padrão do avatar
+        self.attack_damage = 10
+
+        # Estado emocional para lógica fuzzy
+        self.anger = 0  # Nível de raiva (0-15)
+        self.berserk_mode = False
+        self.damage_sim = create_fuzzy_damage_system()
+
+        # Contadores de estados emocionais
+        self.times_hit = 0
+        self.successful_attacks = 0
+        self.consecutive_hits = 0
+        self.consecutive_misses = 0
+        self.last_damage_received = 0
+
         self.attack_key = attack_key
         self.idle_frames = self.load_animation_frames(idle_folder)
         self.run_frames = self.load_animation_frames(run_folder)
