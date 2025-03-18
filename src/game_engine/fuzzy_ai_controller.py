@@ -56,7 +56,7 @@ class AIAttack(py_trees.behaviour.Behaviour):
         self.damage = damage
 
     def update(self):
-        # Inicia animação de ataque se ainda não estiver atacando
+        # Inicia o ataque se ainda não estiver ocorrendo
         if not self.avatar_b.is_attacking:
             self.avatar_b.is_attacking = True
             self.avatar_b.current_frames = self.avatar_b.attack_frames
@@ -66,12 +66,11 @@ class AIAttack(py_trees.behaviour.Behaviour):
             self.avatar_b.attack_finished = False
             print("AIAttack: avatarB iniciou ataque")
 
-        # Quando a animação de ataque terminar, aplica dano se houver colisão
+        # Aplica o dano assim que a animação de ataque terminar
         if self.avatar_b.attack_finished and not self.avatar_b.has_dealt_damage:
-            if self.avatar_b.rect.colliderect(self.avatar_a.rect):
-                self.avatar_a.hp = max(0, self.avatar_a.hp - self.damage)
-                self.avatar_b.has_dealt_damage = True
-                print(f"AIAttack: avatarB aplicou {self.damage} de dano em avatarA (HP A: {self.avatar_a.hp})")
+            self.avatar_a.hp = max(0, self.avatar_a.hp - self.damage)
+            self.avatar_b.has_dealt_damage = True
+            print(f"AIAttack: avatarB aplicou {self.damage} de dano em avatarA (HP A: {self.avatar_a.hp})")
         return Status.SUCCESS
 
 
